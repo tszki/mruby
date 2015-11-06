@@ -5,7 +5,7 @@ MRuby.each_target do
 
   file "#{build_dir}/lib/libmruby.flags.mak" => [__FILE__, libfile("#{build_dir}/lib/libmruby")] do |t|
     open(t.name, 'w') do |f|
-      f.puts "MRUBY_CFLAGS = #{cc.all_flags.gsub('"', '\\"')}"
+      f.puts "MRUBY_CFLAGS = #{cc.all_flags}"
 
       gem_flags = gems.map { |g| g.linker.flags }
       gem_library_paths = gems.map { |g| g.linker.library_paths }
